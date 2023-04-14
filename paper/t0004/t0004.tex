@@ -126,7 +126,9 @@ Each frame extracted from the video as 256X256X3 pixel RBG image, then converted
 
 \subsubsection{Histogram of Oriented Gradients} In order to compute the HOG features, we first crop the input grayscale image to 100X100 pixels, due to the amount of time HOG computation requires. Then HOG feature descriptor is computed with 9 orientations, 2x2 pixels per cell and 2x2 cells per block.
 
-\subsubsection{Scale-Invariant feature transform} We compute two types of SIFT descriptors, key points with size and key points without size, in our models, we have opted to used the key points with size in our image filters.
+\subsubsection{Scale-Invariant feature transform} Bag of Words is a commonly used technique in image classification. Similar to NLP, image features are used as words. We utilized SIFT features for this purpose. SIFT is one of the important algorithms that detect objects irrelevant to the scale and rotation of the image and the reference. This helps a lot while we are comparing the real-world objects to an image though it is independent of the angle and scale of the image.
+We used OpenCV to extract SIFT descriptors for each image.The descriptors were clustered into N (N=60) number of clusters. Then a feature vector v \in \(\mathbb{R}\) ^n   was built where each direction represented a cluster and magnitude represented the count of SIFT descriptors in that cluster for the image.
+
 
 \subsection{Classifier}
 
